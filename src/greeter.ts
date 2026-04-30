@@ -1,8 +1,12 @@
 export function greet(name: string): string {
-  return `Hello from MAIN branch, ${name}!`
+  return `Hello from DEVELOP branch, ${name}!`
 }
 
-// MAIN-only feature — would not exist on develop
-export function deprecatedHelper(): never {
-  throw new Error("removed on develop")
+// DEVELOP-only feature — does not exist on main
+export function newAsyncHelper(): Promise<void> {
+  return Promise.resolve()
+}
+
+export function devOnlyUtil(input: string): string {
+  return input.toUpperCase()
 }
