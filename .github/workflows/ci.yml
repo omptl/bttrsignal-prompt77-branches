@@ -7,14 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: deliberately failing assertion (verify-loop iteration test)
+      - name: deliberately failing assertion (verify-loop iteration E2E)
         run: |
-          echo "checking that greet() returns the magic v2 phrase"
-          if grep -q 'production-grade enterprise' src/greeter.ts; then
-            echo "match found — passing"
-            exit 0
-          else
-            echo "MISSING magic phrase 'production-grade enterprise' in src/greeter.ts"
-            cat src/greeter.ts
-            exit 1
-          fi
+          echo "this workflow always fails — testing verify-loop iteration cap"
+          echo "expected greeter content (impossible-to-produce phrase): UNREACHABLE_BY_AI_zKvL9q3w"
+          echo "actual content:"
+          cat src/greeter.ts
+          exit 1
