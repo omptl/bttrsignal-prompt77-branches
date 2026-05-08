@@ -1,0 +1,13 @@
+name: ci
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: simple smoke test
+        run: |
+          echo "verify-loop smoke test"
+          test -f src/greeter.ts && echo "greeter exists" && exit 0 || exit 1
