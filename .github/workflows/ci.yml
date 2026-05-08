@@ -7,7 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: simple smoke test
+      - name: deliberately failing assertion (verify-loop iteration test)
         run: |
-          echo "verify-loop smoke test"
-          test -f src/greeter.ts && echo "greeter exists" && exit 0 || exit 1
+          echo "checking that greet() returns the magic v2 phrase"
+          if grep -q 'production-grade enterprise' src/greeter.ts; then
+            echo "match found — passing"
+            exit 0
+          else
+            echo "MISSING magic phrase 'production-grade enterprise' in src/greeter.ts"
+            cat src/greeter.ts
+            exit 1
+          fi
