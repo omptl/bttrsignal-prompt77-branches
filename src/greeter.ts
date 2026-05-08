@@ -1,4 +1,7 @@
 export function greet(name: string): string {
+  if (name == null) {
+    return `Hi there! Welcome aboard!`
+  }
   return `Hi there, ${name}! Welcome aboard!`
 }
 
