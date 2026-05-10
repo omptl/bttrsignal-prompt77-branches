@@ -1,5 +1,5 @@
 export function greet(name: string): string {
-  return `Hello from MAIN branch, ${name}!`
+  return `Hi there, ${name}! Welcome aboard!`
 }
 
 // MAIN-only feature — would not exist on develop
